@@ -25,13 +25,13 @@ namespace ChatRest.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:domiserver2.database.windows.net,1433;Initial Catalog=ChatDB;Persist S" +
-            "ecurity Info=False;User ID=domiserver2;Password=Password123;MultipleActiveResult" +
-            "Sets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")]
-        public string ChatDBString {
+            "ecurity Info=False;User ID={your_username};Password={your_password};MultipleActi" +
+            "veResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=" +
+            "30;")]
+        public string DatabaseString {
             get {
-                return ((string)(this["ChatDBString"]));
+                return ((string)(this["DatabaseString"]));
             }
         }
     }

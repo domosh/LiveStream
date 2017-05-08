@@ -12,7 +12,9 @@ namespace ChatRest
     [ServiceContract]
     public interface IService1
     {
-
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "Messages/")]
+        IList<Messages> GetAllMessages();
 
     }
 }

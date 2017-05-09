@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace ChatRest
     {
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "Messages/")]
-        IList<Messages> GetAllMessages();
+        List<Message> GetAllMessages();
 
     }
 }

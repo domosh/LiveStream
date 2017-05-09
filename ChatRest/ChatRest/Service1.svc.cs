@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
+
 
 namespace ChatRest
 {
@@ -14,15 +17,42 @@ namespace ChatRest
     public class Service1 : IService1
     {
         private const string ConnectionString =
-            "Server=tcp:domiserver2.database.windows.net,1433;Initial Catalog=ChatDB;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        private static List<Messages> Messages = new List<Messages>()
+            "Server=tcp:periscopechatserver.database.windows.net,1433;Initial Catalog=Periscope;Persist Security Info=False;User ID=Periscope;Password=Chickenpizza123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+
+
+        public static Message ReadMessage(IDataRecord Reader)
         {
-            new Messages("hi i am kifayat"),
-            new Messages("Hi i am John")
-            
-        };
-        public IList<Messages> GetAllMessages()
+            string msg = Reader.GetString(0);
+            Message newMessage = new Message
+            {
+                _Message = msg
+            };
+            return newMessage;
+        }
+
+        public List<Message> GetAllMessages()
         {
+            const string SelectMessages = "select * from ChatTable ";
+            List<Message> Messages = new List<Message>();
+            using (SqlConnection databaseConnection = new SqlConnection(ConnectionString))
+            {
+                databaseConnection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(SelectMessages, databaseConnection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                Message student = ReadMessage(reader);
+                                Messages.Add(student);
+                            }
+                        }
+                    }
+                }
+            }
             return Messages;
         }
     }

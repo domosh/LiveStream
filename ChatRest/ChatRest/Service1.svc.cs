@@ -55,5 +55,24 @@ namespace ChatRest
             }
             return Messages;
         }
+
+        public Message AddMessage(Message newMessage)
+        {
+
+            string sqlLine = "insert into ChatTable (Msg) values (@Msg)";
+
+            using (SqlConnection databaseConnection = new SqlConnection(ConnectionString))
+            {
+                databaseConnection.Open();
+                using (SqlCommand AddingCommand = new SqlCommand(sqlLine, databaseConnection))
+                {
+                    AddingCommand.Parameters.Add(new SqlParameter("Msg", newMessage));
+                    AddingCommand.ExecuteNonQuery();
+                }
+            }
+
+
+            return newMessage;
+        }
     }
 }

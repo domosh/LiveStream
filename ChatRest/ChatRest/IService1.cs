@@ -17,5 +17,9 @@ namespace ChatRest
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "Messages/")]
         List<Message> GetAllMessages();
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "Messages/")]
+        Message AddMessage(Message newMessage);
+
     }
 }

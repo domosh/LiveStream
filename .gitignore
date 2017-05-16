@@ -240,3 +240,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/ChatRest/ChatRest/Properties/PublishProfiles/PersiscopeV2 - Web Deploy.pubxml
+/VideoStreamExample/VideoStreamExample/Something.cs

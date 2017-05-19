@@ -59,7 +59,7 @@ namespace ChatRest
         public Message AddMessage(Message newMessage)
         {
 
-            string sqlLine = "insert into ChatTable (Msg) values (@Msg)";
+            string sqlLine = "insert into ChatTable (Message) values (@Msg)";
 
             using (SqlConnection databaseConnection = new SqlConnection(ConnectionString))
             {

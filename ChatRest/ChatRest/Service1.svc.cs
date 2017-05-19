@@ -33,7 +33,7 @@ namespace ChatRest
 
         public List<Message> GetAllMessages()
         {
-            const string SelectMessages = "select * from ChatTable ";
+            const string SelectMessages = "select Message from ChatTable ";
             List<Message> Messages = new List<Message>();
             using (SqlConnection databaseConnection = new SqlConnection(ConnectionString))
             {

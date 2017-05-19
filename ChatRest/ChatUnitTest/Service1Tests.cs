@@ -23,7 +23,7 @@ namespace ChatRest.Tests
         [TestMethod]
         public void AddMessage()
         {
-            string result = s.AddMessage();
+            List<Message> result = s.AddMessage();
             Assert.AreEqual();
         }
     }

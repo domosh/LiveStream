@@ -66,7 +66,7 @@ namespace ChatRest
                 databaseConnection.Open();
                 using (SqlCommand AddingCommand = new SqlCommand(sqlLine, databaseConnection))
                 {
-                    AddingCommand.Parameters.Add(new SqlParameter("Msg", newMessage));
+                    AddingCommand.Parameters.Add(new SqlParameter("Msg", newMessage._Message));
                     AddingCommand.ExecuteNonQuery();
                 }
             }
